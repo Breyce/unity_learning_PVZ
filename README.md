@@ -8,6 +8,7 @@ Start learning unity3D on my own. Sharing my demos and some experiences.
 My learning plan is to find a project and then follow tutorials to learn how to use Unity3D directly. However, there is a downside to this approach. I know almost nothing about Unity3D, so I could encounter countless problems at every step. Progress is relatively slow. Today, it took me nearly three hours to achieve background importing, sunlight creation, and the functionality to generate sunlight randomly. I encountered several main issues:
 
 1. What do the various parameters of the Camera represent?
+   - https://blog.csdn.net/weixin_43147385/article/details/124234741
 2. What are the specific usage methods and scenarios for Canvas?
 3. Does Text Legacy only serve to display text?
 4. How do I add a custom layer priority to a Layer?
