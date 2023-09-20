@@ -100,6 +100,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     //  让物体 跟随 着鼠标
     public void OnDrag(PointerEventData eventData)
     {
+        if (curObj != null)
+        {
+            curObj.transform.position = ScreenToWorld(eventData.position);
+        };
     }
     //让物体生成在点击到的格子上
     public void OnEndDrag(PointerEventData eventData)
