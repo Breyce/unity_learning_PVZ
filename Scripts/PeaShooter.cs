@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PeaShooter : MonoBehaviour
 {
+    public bool isOnGround=false;
     private Transform firePoint;
 
     private float timer;
@@ -13,15 +14,19 @@ public class PeaShooter : MonoBehaviour
     void Start()
     {
         firePoint = transform.Find("FirePoint");
+        Debug.Log(firePoint);
         timer = 0;
+        isOnGround = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isOnGround == false) return;
         timer += Time.deltaTime;
         if (timer >= internel)
         {
+           
             Fire();
             timer = 0;
         }
@@ -31,5 +36,7 @@ public class PeaShooter : MonoBehaviour
     {
         GameObject tmp = Resources.Load<GameObject>("Prefabs/PeaBullet");
         GameObject go = GameObject.Instantiate(tmp, firePoint);
+        
+        //go.transform.position = firePoint.position;
     }
 }

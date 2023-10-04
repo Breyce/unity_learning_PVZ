@@ -14,6 +14,9 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     private GameObject bg;
 
+    //花费的阳光
+    public int costSun;
+
     //当前的物体
     public GameObject curObj;
 
@@ -23,6 +26,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     // Start is called before the first frame update
     void Start()
     {
+        costSun = 50;
         timer = 0;
         image = transform.Find("Progress").GetComponent<Image>();
         bg = transform.Find("BG").gameObject;
@@ -47,10 +51,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     private void UpdateBg()
     {
-        //1.是否冷却  fillAmount=0
-        //2.如果当前拥有的阳光  比消耗的阳光多  
+        //1.是否冷却 fillAmount=0
+        //2.如果当前拥有的阳光比消耗的阳光多  
 
-        if (image.fillAmount == 0 )//&& GameMgr.Instance.GetSun() >= costSun)
+        if (image.fillAmount == 0 && GameManager.Instance.GetSun() >= costSun)
         {
             bg.SetActive(false);
         }
@@ -60,7 +64,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
     }
 
-    //根据名字 加载 物体
+    //根据名字加载物体
     public void LoadByName(string name)
     {
         // 切割字符串
@@ -71,7 +75,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         plantPrefab = Resources.Load<GameObject>(resPath);
     }
 
-    //屏幕坐标  转  z为0的世界坐标
+    //屏幕坐标转z为0的世界坐标
     public Vector3 ScreenToWorld(Vector3 pos)
     {
         Vector3 position = Camera.main.ScreenToWorldPoint(pos);
@@ -81,18 +85,15 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         return final;
     }
 
-    //生成一个物体  出现在鼠标所对应的世界处坐标
+    //生成一个物体出现在鼠标所对应的世界处坐标
     public void OnBeginDrag(PointerEventData eventData)
     {
         //  Debug.Log(eventData.position);  
-        //  eventData.position  不是  世界坐标    做转换
+        //  eventData.position  不是世界坐标  做转换
         //  unity 坐标系   1. 世界坐标系   2.屏幕坐标系     3.视口坐标  
 
         //如果黑色背景激活: -416,-224
-        //if (bg.activeSelf)
-        //{
-        //    return;
-       // }
+        if (bg.activeSelf){ return; }
         curObj = Instantiate(plantPrefab);
         curObj.transform.position = ScreenToWorld(eventData.position);
     }
@@ -108,5 +109,64 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     //让物体生成在点击到的格子上
     public void OnEndDrag(PointerEventData eventData)
     {
+        //计时器重置
+        timer = 0;
+
+        //UI更新  
+        GameManager.Instance.ChangSun(-costSun);
+        UIManager.Instance.ChangeUICount(GameManager.Instance.GetSun());
+
+        //开始正式种植
+        if (curObj == null) { return; }
+        Collider2D[] col = Physics2D.OverlapPointAll(ScreenToWorld(eventData.position));
+
+        // 遍历所有的格子
+        for (int i = 0; i < col.Length; i++)
+        {
+
+            //考虑条件：1 是格子；2 有没有植物
+            if (col[i].tag == "Land" && col[i].gameObject.transform.childCount == 0)
+            {
+                curObj.transform.position = col[i].transform.position;
+
+                curObj.transform.SetParent(col[i].transform);
+
+
+                //这里我们生成的是游戏物体  拖动时会调用方法
+                //会出现 拖动时发射子弹的bug
+                //设置isOnGround 为true
+
+
+                //以豌豆为例 后续会提取Plant 类
+                PeaShooter obj = curObj.GetComponent<PeaShooter>();
+
+                if (obj != null)
+                {
+
+                    obj.isOnGround = true;
+
+                }
+
+                //Plant obj = curObj.GetComponent<Plant>();
+
+                //if (obj != null)
+                //{
+
+                //    obj.isOnGround = true;
+
+                //}
+
+                curObj = null;
+                return;
+            }
+
+        }
+
+        // 如果没有合适的格子   curob还在
+        if (curObj != null)
+        {
+            GameObject.Destroy(curObj);
+            curObj = null;
+        }
     }
 }

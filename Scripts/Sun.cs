@@ -50,7 +50,10 @@ public class Sun : MonoBehaviour
     //实现点击阳光阳光飞至控制面板。
     private void OnMouseDown()
     {
-        
+        //UI修改
+        GameManager.Instance.ChangSun(50);
+        UIManager.Instance.ChangeUICount(GameManager.Instance.GetSun());
+
         //坐标转换
 
         Vector3 target = Camera.main.ScreenToWorldPoint(sunNum

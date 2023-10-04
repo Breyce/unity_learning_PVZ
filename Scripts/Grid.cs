@@ -23,7 +23,6 @@ public class Grid : MonoBehaviour
         {
             for (int j = 0; j < 5; j++)
             {
-
                 GameObject tmp = Instantiate(go);
 
                 tmp.tag = "Land";

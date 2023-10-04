@@ -3,7 +3,7 @@ Start learning unity3D on my own. Sharing my demos and some experiences.
 
 
 
-## First Day of Development: 2023.9.10
+## Development Day 1: 2023.9.10
 
 My learning plan is to find a project and then follow tutorials to learn how to use Unity3D directly. However, there is a downside to this approach. I know almost nothing about Unity3D, so I could encounter countless problems at every step. Progress is relatively slow. Today, it took me nearly three hours to achieve background importing, sunlight creation, and the functionality to generate sunlight randomly. I encountered several main issues:
 
@@ -23,3 +23,12 @@ After paying attention to the issues from yesterday, today's progress is much sm
 
 2. The biggest time-waster today was when I attached an event to one frame of the animation. This event kept triggering twice. It wasn't until later that I realized when I set "Use Transitions" to "Yes," it would play both animations again at the end of the first animation and the start of the second animation, causing that one frame to be played twice and triggering the event twice. It's quite puzzling.
 
+## Development Day 3: 2023.10.4
+
+Because I've been busy with the graduate school application process for a long time, I haven't continued working on PVZ production for quite a while. When I returned to the project, I realized that I needed to reacquaint myself with some things. Today, the most challenging issue that troubled me was the Pea Shooter part. When I was only creating examples before, I found that the Pea Shooter could shoot peas from the correct position, and I thought I had succeeded. However, today I suddenly realized that the peas were always being shot from the same world coordinates, regardless of how the Pea Shooter moved. After searching for a while, I discovered that my peas weren't getting the FirePoint game object when they were generated. It turned out that I didn't bind FirePoint and PeaShooter together—I only made PeaShooter a prefab and didn't make FirePoint, this child object, a prefab as well.
+
+Today, I delved into the following three topics.
+
+1. transform.Find():https://blog.csdn.net/weixin_42935398/article/details/102729167
+2. Instantiate:https://blog.csdn.net/weixin_43913272/article/details/90246161
+3. Open console: https://docs.unity.cn/cn/2021.2/Manual/Console.html

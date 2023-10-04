@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SunFlower : MonoBehaviour
 {
-    //
+    public bool isOnGround = false;
     private float timer;
     private float internel = 3.0f;
 
@@ -14,6 +14,7 @@ public class SunFlower : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         timer = 0;
+        isOnGround = false;
     }
 
     private void CreateSun()
@@ -44,6 +45,8 @@ public class SunFlower : MonoBehaviour
 
     private void Update()
     {
+        if (isOnGround == false) return;
+
         timer += Time.deltaTime;
 
         if (timer > internel)
