@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PeaShooter : MonoBehaviour
 {
-    public bool isOnGround=false;
+    public bool isOnGround = false;
     private Transform firePoint;
 
     private float timer;
     private float internel = 3f;
 
+    private int currentHealth;
+    private int maxHealth = 10;
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
         firePoint = transform.Find("FirePoint");
-        Debug.Log(firePoint);
         timer = 0;
         isOnGround = false;
     }
@@ -26,7 +28,6 @@ public class PeaShooter : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= internel)
         {
-           
             Fire();
             timer = 0;
         }
@@ -36,7 +37,20 @@ public class PeaShooter : MonoBehaviour
     {
         GameObject tmp = Resources.Load<GameObject>("Prefabs/PeaBullet");
         GameObject go = GameObject.Instantiate(tmp, firePoint);
-        
-        //go.transform.position = firePoint.position;
+    }
+
+    //¸Ä±äÑªÁ¿
+    public int ChangeHealth(int damage)
+    {
+        currentHealth += damage;
+        if (currentHealth <= 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
+        Debug.Log("+++++++++++++++");
+        Debug.Log(currentHealth);
+        Debug.Log("+++++++++++++++");
+
+        return currentHealth;
     }
 }

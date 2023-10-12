@@ -5,8 +5,11 @@ using UnityEngine;
 public class PeaBullet : MonoBehaviour
 {
     private float speed = 500f;
-    
+
     private Vector3 dir = new Vector3(1, 0, 0);
+
+    //ÉËº¦
+    public int damage = 5;
 
     private IEnumerator DeleteBullet()
     {
@@ -15,15 +18,28 @@ public class PeaBullet : MonoBehaviour
         //GameObject.Destroy(gameObject);
         gameObject.SetActive(false);
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         StartCoroutine(DeleteBullet());
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(dir * speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Èç¹ûÊÇ½©Ê¬   ½©Ê¬¼õÑª   ×Óµ¯Ê§»î
+        if (collision.tag == "Zombie")
+        {
+            Zombie zom = collision.GetComponent<Zombie>();
+            if (zom != null)
+            {
+                zom.ChangeHealth(-damage);
+                gameObject.SetActive(false);
+            }
+        }
     }
 }

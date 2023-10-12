@@ -32,3 +32,7 @@ Today, I delved into the following three topics.
 1. transform.Find():https://blog.csdn.net/weixin_42935398/article/details/102729167
 2. Instantiate:https://blog.csdn.net/weixin_43913272/article/details/90246161
 3. Open console: https://docs.unity.cn/cn/2021.2/Manual/Console.html
+
+## Development Day 4: 2023.10.12
+
+During the past eight days, I was busy preparing for a final presentation. Today, I finally had some free time and spent about 5 hours to achieve the confrontation between plants and zombies. The main reason was that, for some reason, the Y-axis of the FirePoint was locked, and I hadn't saved my progress earlier, so I had to start over. However, this had its advantages as well. I now have a clearer understanding of the entire combat logic and how to use the characters. I didn't encounter any new challenging concepts today, or perhaps I did, but I might have overlooked them, given that my solution was somewhat brute force: starting over.
