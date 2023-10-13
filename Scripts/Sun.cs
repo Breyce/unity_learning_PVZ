@@ -14,6 +14,8 @@ public class Sun : MonoBehaviour
     private float speed = 100;
 
     private GameObject sunNum;
+
+    private bool isClick = false;
     private void Start() 
     {
         sunNum = GameObject.Find("SunNum");
@@ -35,14 +37,17 @@ public class Sun : MonoBehaviour
     {
         if (isSkySun == true)
         {
-            if(transform.position.y > TargetY)
+            if(isClick == false) 
             {
-                transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * speed);
-            }
-            else
-            {
-                Destroy(gameObject, 3f);
-            }
+                if (transform.position.y > TargetY)
+                {
+                    transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * speed);
+                }
+                else
+                {
+                    Destroy(gameObject, 3f);
+                }
+            } 
         }
 
     }
@@ -50,6 +55,7 @@ public class Sun : MonoBehaviour
     //实现点击阳光阳光飞至控制面板。
     private void OnMouseDown()
     {
+        isClick = true;
         //UI修改
         GameManager.Instance.ChangSun(50);
         UIManager.Instance.ChangeUICount(GameManager.Instance.GetSun());

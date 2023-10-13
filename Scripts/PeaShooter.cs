@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeaShooter : MonoBehaviour
+public class PeaShooter : Plant
 {
-    public bool isOnGround = false;
+    //public bool isOnGround = false;
     private Transform firePoint;
 
     private float timer;
     private float internel = 3f;
 
-    private int currentHealth;
-    private int maxHealth = 10;
+    //private int currentHealth;
+    //private int maxHealth = 10;
+
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         currentHealth = maxHealth;
         firePoint = transform.Find("FirePoint");
@@ -22,7 +23,7 @@ public class PeaShooter : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (isOnGround == false) return;
         timer += Time.deltaTime;
@@ -39,18 +40,18 @@ public class PeaShooter : MonoBehaviour
         GameObject go = GameObject.Instantiate(tmp, firePoint);
     }
 
-    //改变血量
-    public int ChangeHealth(int damage)
-    {
-        currentHealth += damage;
-        if (currentHealth <= 0)
-        {
-            GameObject.Destroy(gameObject);
-        }
-        Debug.Log("+++++++++++++++");
-        Debug.Log(currentHealth);
-        Debug.Log("+++++++++++++++");
+    ////改变血量
+    //public int ChangeHealth(int damage)
+    //{
+    //    currentHealth += damage;
+    //    if (currentHealth <= 0)
+    //    {
+    //        GameObject.Destroy(gameObject);
+    //    }
+    //    Debug.Log("+++++++++++++++");
+    //    Debug.Log(currentHealth);
+    //    Debug.Log("+++++++++++++++");
 
-        return currentHealth;
-    }
+    //    return currentHealth;
+    //}
 }

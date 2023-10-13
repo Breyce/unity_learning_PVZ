@@ -12,18 +12,11 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         Instance = this;
-
         sunNum = GameObject.Find("SunNum").GetComponent<Text>();
     }
 
     public void ChangeUICount(int num)
     {
         sunNum.text = num.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

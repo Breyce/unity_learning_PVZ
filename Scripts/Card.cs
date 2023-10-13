@@ -138,16 +138,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
 
                 //以豌豆为例 后续会提取Plant 类
-                PeaShooter obj = curObj.GetComponent<PeaShooter>();
-
-                if (obj != null)
-                {
-
-                    obj.isOnGround = true;
-
-                }
-
-                //Plant obj = curObj.GetComponent<Plant>();
+                //PeaShooter obj = curObj.GetComponent<PeaShooter>();
 
                 //if (obj != null)
                 //{
@@ -155,6 +146,15 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 //    obj.isOnGround = true;
 
                 //}
+
+                Plant obj = curObj.GetComponent<Plant>();
+
+                if (obj != null)
+                {
+
+                    obj.isOnGround = true;
+
+                }
 
                 curObj = null;
                 return;
