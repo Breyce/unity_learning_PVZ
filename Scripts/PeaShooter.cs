@@ -36,8 +36,10 @@ public class PeaShooter : Plant
 
     private void Fire()
     {
-        GameObject tmp = Resources.Load<GameObject>("Prefabs/PeaBullet");
-        GameObject go = GameObject.Instantiate(tmp, firePoint);
+        //GameObject tmp = Resources.Load<GameObject>("Prefabs/PeaBullet");
+        //GameObject go = GameObject.Instantiate(tmp, firePoint);
+        GameObject go = BulletPool.Instance.GetPoolObject();
+        go.transform.position = firePoint.position;
     }
 
     ////¸Ä±äÑªÁ¿

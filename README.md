@@ -37,8 +37,12 @@ Today, I delved into the following three topics.
 
 During the past eight days, I was busy preparing for a final presentation. Today, I finally had some free time and spent about 5 hours to achieve the confrontation between plants and zombies. The main reason was that, for some reason, the Y-axis of the FirePoint was locked, and I hadn't saved my progress earlier, so I had to start over. However, this had its advantages as well. I now have a clearer understanding of the entire combat logic and how to use the characters. I didn't encounter any new challenging concepts today, or perhaps I did, but I might have overlooked them, given that my solution was somewhat brute force: starting over.
 
-## Development Day 5: 2023.10.12
+## Development Day 5: 2023.10.13
 
 On the fifth day of development, I found that I was becoming proficient in many aspects of Unity. On the first day, it took me two to three hours just to tinker with a prefab, but today, I can recreate a series of game entities in just half an hour. I spent four hours developing today, and both my programming and debugging approaches have become smoother. My understanding of Unity's internal components is also deepening gradually. I didn't encounter any major issues today and managed to fix some minor bugs. However, there's still an issue with the sunflower: it can generate the sun correctly in some parts of the scene but not in others, which is quite strange.
 
 However, there are also some lingering issues from the past, such as coroutines.
+
+## Development Day 6: 2023.10.14
+
+Today was the first time I encountered a bug within Unity itself. The engine couldn't locate one of my game entities. After examining the logic and code for about half an hour, I felt that the issue was with the engine itself. So, I restarted the engine and successfully found it. It felt quite magical because I had a sense of touching some of Unity's underlying compilation and execution logic, even though I didn't see the source code, but I could make some educated guesses. I didn't encounter any new challenges in terms of knowledge today, but I did learn something about audio controls and camera controls, which was today's takeaway.

@@ -10,8 +10,8 @@ public class Zombie : MonoBehaviour
     private Vector3 dir = new Vector3(-1, 0, 0);
     private Animator anim;
 
-    private bool isWalk = true;
-    private bool isHurt = false;
+    public bool isWalk = true;
+    public bool isHurt = false;
 
     public int damage = 10;
     public float attackInterval = 1f;
@@ -39,11 +39,14 @@ public class Zombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDie) { return; }
-        if (isWalk)
+        if (LevelManager.Instance.currentstate == GameState.Fight)
         {
-            anim.SetBool("isWalk", true);
-            transform.position += dir * Time.deltaTime * speed;
+            if (isDie) { return; }
+            if (isWalk)
+            {
+                anim.SetBool("isWalk", true);
+                transform.position += dir * Time.deltaTime * speed;
+            }
         }
     }
 
