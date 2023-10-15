@@ -113,4 +113,10 @@ public class ZombieManager : MonoBehaviour
     {
         StopAllCoroutines();
     }
+
+    public void ClearZombie()
+    {
+        isRefresh = false;
+        zombies.Clear();
+    }
 }

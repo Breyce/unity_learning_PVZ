@@ -25,7 +25,9 @@ public class Zombie : MonoBehaviour
     public GameObject head;
     public bool lostHead;
 
-    // Start is called before the first frame update
+    //游戏结束
+    private Vector3 finalPoint;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -34,9 +36,11 @@ public class Zombie : MonoBehaviour
         head.SetActive(false);
         isDie = false;
         lostHead = false;
+
+        finalPoint = new Vector3(-545F, -61.28901F, 0);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (LevelManager.Instance.currentstate == GameState.Fight)
@@ -46,6 +50,18 @@ public class Zombie : MonoBehaviour
             {
                 anim.SetBool("isWalk", true);
                 transform.position += dir * Time.deltaTime * speed;
+
+                if (transform.position.x < -545f)
+                {
+                    Vector3 dir = (finalPoint - transform.position).normalized;
+                    transform.Translate(dir * Time.deltaTime * speed);
+
+                    if (Vector3.Distance(finalPoint, transform.position) < 50f)
+                    {
+                        //游戏结束  Todo
+                        LevelManager.Instance.currentstate = GameState.End;
+                    }
+                }
             }
         }
     }
@@ -72,19 +88,6 @@ public class Zombie : MonoBehaviour
         {
             //重置Time
             damageTime = 0;
-            //扣血 暂时以豌豆射手为例 后面会提Plant类
-            //PeaShooter plant = collision.gameObject.GetComponent<PeaShooter>();
-            //if (plant != null)
-            //{
-            //    plant.ChangeHealth(-damage);
-            //}
-
-            //SunFlower plant1 = collision.gameObject.GetComponent<SunFlower>();
-            //if (plant1 != null)
-            //{
-            //    Debug.Log("太阳花被碰到了");
-            //    plant1.ChangeHealth(-damage);
-            //}
 
             Plant plant = collision.gameObject.GetComponent<Plant>();
 
@@ -115,28 +118,6 @@ public class Zombie : MonoBehaviour
                 anim.SetBool("isWalk", true);
             }
         }
-
-        //PeaShooter plant = collision.gameObject.GetComponent<PeaShooter>();
-
-        //if (plant != null)
-        //{
-        //    if(plant.ChangeHealth(0) <= 0)
-        //    {
-        //        isWalk = true;
-        //        anim.SetBool("isWalk", true);
-        //    }
-        //}
-
-        //SunFlower plant1 = collision.gameObject.GetComponent<SunFlower>();
-
-        //if (plant1 != null)
-        //{
-        //    if (plant1.ChangeHealth(0) <= 0)
-        //    {
-        //        isWalk = true;
-        //        anim.SetBool("isWalk", true);
-        //    }
-        //}
     }
 
     //改变血量

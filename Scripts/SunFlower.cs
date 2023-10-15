@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class SunFlower : Plant
 {
-    //public bool isOnGround = false;
     private float timer;
     private float internel = 3.0f;
-
-    //private int currentHealth;
-    //private int maxHealth = 10;
-
-    //private Animator anim;
 
     public override void Start() 
     {
@@ -70,19 +64,4 @@ public class SunFlower : Plant
 
         timer = 0;
     }
-
-    ////¸Ä±äÑªÁ¿
-    //public int ChangeHealth(int damage)
-    //{
-    //    currentHealth += damage;
-    //    if (currentHealth <= 0)
-    //    {
-    //        GameObject.Destroy(gameObject);
-    //    }
-    //    Debug.Log("+++++++++++++++");
-    //    Debug.Log(currentHealth);
-    //    Debug.Log("+++++++++++++++");
-
-    //    return currentHealth;
-    //}
 }

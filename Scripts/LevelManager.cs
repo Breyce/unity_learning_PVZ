@@ -42,7 +42,7 @@ public class LevelManager : MonoBehaviour
                 //隐藏UI 面板  播放开始动画
                 UIManager.Instance.HideUI();
 
-                //  摄像机移动到右侧  再移回
+                //摄像机移动到右侧  再移回
                 CameraManager.Instance.CameraMove();
 
                 //更改状态
@@ -51,12 +51,24 @@ public class LevelManager : MonoBehaviour
 
             case GameState.Fight:
                 ZombieManager.Instance.isRefresh = true;
-
                 break;
 
             case GameState.End:
-
+                GameOver();
                 break;
         }
+    }
+
+    public void GameOver()
+    {
+        //UI  显示
+        UIManager.Instance.GameOver();
+        //天空太阳停止生成
+        SkyManager.Instance.StopCreate();
+        //僵尸 停止生成
+        ZombieManager.Instance.StopCreateZombie();
+        ZombieManager.Instance.ClearZombie();
+
+        StopAllCoroutines();
     }
 }

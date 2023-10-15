@@ -88,7 +88,6 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     //生成一个物体出现在鼠标所对应的世界处坐标
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //  Debug.Log(eventData.position);  
         //  eventData.position  不是世界坐标  做转换
         //  unity 坐标系   1. 世界坐标系   2.屏幕坐标系     3.视口坐标  
 
@@ -135,18 +134,6 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 //这里我们生成的是游戏物体  拖动时会调用方法
                 //会出现 拖动时发射子弹的bug
                 //设置isOnGround 为true
-
-
-                //以豌豆为例 后续会提取Plant 类
-                //PeaShooter obj = curObj.GetComponent<PeaShooter>();
-
-                //if (obj != null)
-                //{
-
-                //    obj.isOnGround = true;
-
-                //}
-
                 Plant obj = curObj.GetComponent<Plant>();
 
                 if (obj != null)

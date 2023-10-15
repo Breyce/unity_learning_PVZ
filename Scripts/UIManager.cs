@@ -11,7 +11,9 @@ public class UIManager : MonoBehaviour
     private ReadyAnim ready;
 
     private Text sunNum;
-    // Start is called before the first frame update
+
+    private OverPannel overPannel;
+
     void Start()
     {
         Instance = this;
@@ -19,6 +21,9 @@ public class UIManager : MonoBehaviour
         chooseBg = GameObject.Find("ChooseBG").gameObject;
 
         ready = GameObject.Find("ReadyAnim").gameObject.GetComponent<ReadyAnim>();
+
+        overPannel = GameObject.Find("OverPannel").gameObject.GetComponent<OverPannel>();
+        
     }
 
     public void ChangeUICount(int num)
@@ -39,5 +44,10 @@ public class UIManager : MonoBehaviour
     public void ShowReady()
     {
         ready.ShowReady();
+    }
+
+    public void GameOver()
+    {
+        overPannel.Over();
     }
 }

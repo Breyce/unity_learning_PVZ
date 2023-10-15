@@ -19,8 +19,6 @@ public class SkyManager : MonoBehaviour
         Instance = this;
 
         sunPre = Resources.Load<GameObject>("Prefabs/Sun_1");
-
-        //InvokeRepeating("CreatSun", 2, 5);
     }
 
     //´´½¨Ì«Ñô

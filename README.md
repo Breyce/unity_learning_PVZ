@@ -46,3 +46,11 @@ However, there are also some lingering issues from the past, such as coroutines.
 ## Development Day 6: 2023.10.14
 
 Today was the first time I encountered a bug within Unity itself. The engine couldn't locate one of my game entities. After examining the logic and code for about half an hour, I felt that the issue was with the engine itself. So, I restarted the engine and successfully found it. It felt quite magical because I had a sense of touching some of Unity's underlying compilation and execution logic, even though I didn't see the source code, but I could make some educated guesses. I didn't encounter any new challenges in terms of knowledge today, but I did learn something about audio controls and camera controls, which was today's takeaway.
+
+## Development Day 7: 2023.10.15
+
+Plants vs. Zombies is over today! I only made a very, very basic version, and there are even some minor bugs, but that's okay. My goal was simply to learn Unity-related knowledge, and this was just a starting point. I didn't delve into all the details of the code logic (of course, during the production, I also carefully adjusted all the parameters to make it look better).
+
+Looking back on these days of development, there were many things that impacted progress in between. However, upon careful reflection, I realized that the real transformation began on the fourth day. It was on that day that I no longer found myself completely lost when searching for bugs. My familiarity with the logic of attaching scripts to entities within the game engine and my knowledge of C# and object-oriented programming allowed me to gradually study their content by analyzing both the code logic and Unity's parsing logic. It was a genuine sense of achievement. By the last day, when I was searching for bugs, I could confidently say, "It's the engine that has a bug; let's restart it," and I would find the solution.
+
+Next, I believe what I want to do is create various types of games, explore different scenarios and settings. I hope everything goes smoothly.
